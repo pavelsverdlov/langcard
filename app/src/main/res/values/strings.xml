@@ -15,4 +15,65 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+    <string name="title_actionbar_root_activity_1column_switcher">Single column</string>
+    <string name="title_actionbar_root_activity_2column_switcher">Two columns</string>
+    <string name="title_actionbar_root_activity_add_langs">Languages</string>
+    <string name="btn_text_add_word">Add word</string>
+
+    <string name="drawer_title_dictionaries">Dictionaries</string>
+    <string name="title_activity_edit_dictionaries">Edit dictionaries</string>
+
+    <string name="title_activity_game_learning">Learning</string>
+    <string name="activity_add_ticket_title_dictionary">DICTIONARY</string>
+    <string name="title_activity_add_ticket"></string>
+    <string name="title_activity_edit_ticket"></string>
+    <string name="title_activity_add_langs">Edit languages</string>
+    <string name="title_activity_root">RootActivity</string>
+    <string name="title_activity_google_drive">GoogleDriveActivity</string>
+    <string name="title_activity_file_browser">FileBrowserActivity</string>
+    <string name="title_activity_root_seach">RootSeachActivity</string>
+    <string name="title_activity_search_results">SearchResultsActivity</string>
+    <string name="title_activity_crash">Sorry! :(</string>
+
+    <!-- remove ticket -->
+    <string name="title_delete_card">DELETE CARD</string>
+    <string name="ask_text_delete_card">Do you want to delete this card?</string>
+    <!-- Mask as leaned -->
+    <string name="title_mark_as_learned">MARK AS LEARNED</string>
+    <string name="ask_text_mark_as_learned">Do you want to mark this card as learned?</string>
+    <!-- dictionary -->
+    <string name="title_dictionaries">DICTIONARIES</string>
+    <string name="title_delete_dictionary">DELETE DICTIONARY</string>
+    <string name="title_delete_dictionary_refuse">Dictionary \"%1$s\" already existed.</string>
+    <string name="ask_text_delete_dictionary">Do you want to delete \"%1$s\" dictionary?</string>
+    <string name="title_add_new_dictionaries">NEW DICTIONARY NAME</string>
+    <string name="title_edit_dictionaries">EDIT DICTIONARY</string>
+    <string name="title_add_new_dictionary_btn">Add new dictionary</string>
+    <!-- language -->
+    <string name="title_delete_language">DELETE LANGUAGE</string>
+    <string name="title_delete_language_refuse">Language \"%1$s\" already existed.</string>
+    <string name="ask_text_delete_language">Do you want to delete \"%1$s\" language?</string>
+    <string name="title_edit_language">EDIT LANGUAGE</string>
+
+    <!-- ERRORS -->
+    <string name="error_send_report">Send report!!!!</string>
+    <string name="error_occurred">An error occurred. Please try again.</string>
+    <string name="error_operation_denied">Operation was denied.</string>
+    <string name="error_removing_language_cause_used">Can not remove language because it is used for cards.</string>
+    <string name="error_removing_dictionary_cause_used">Can not remove dictionary because it is used for cards.</string>
+
+    <!--Consts-->
+    <string name="title_edit">Edit</string>
+    <string name="dictionary_title_all">All</string>
+    <string name="dictionary_title_learned">Learned</string>
+
+    <string name="title_activity_add_lang">AddLangActivity</string>
+    <string name="title_activity_add_card">AddCardActivity</string>
+
+    <!-- menu add card -->
+    <string name="title_menu_add_card_delete">Delete</string>
+    <string name="title_menu_add_card_mark_as_learned">Mark as learned</string>
+    <string name="title_menu_add_card_select_color">Select color</string>
+    <string name="title_menu_add_card_turnover_langs">Turnover languages</string>
 </resources>

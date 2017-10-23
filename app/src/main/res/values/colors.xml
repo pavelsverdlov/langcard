@@ -3,4 +3,12 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="common_action_bar_splitter">#d2d2d2</color>
+    <color name="default_background_color">#E4E4E4</color>
+
+    <item name="drawer_blue" type="color">#FF33B5E5</item>
+    <item name="gray_back_card" type="color">#9E9E9E</item>
+
+    <item name="gray_background" type="color">#e0e0e0</item>
 </resources>

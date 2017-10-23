@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:state_enabled="false"
+        android:color="@android:color/white" />
+    <item
+        android:state_pressed="true"
+        android:state_enabled="true"
+        android:color="@color/colorPrimaryDark"
+        android:drawable="@color/colorPrimary"
+        >
+        <!---->
+        <!--<shape>-->
+            <!--<solid android:color="@color/gray_background" />-->
+            <!--<corners android:radius="6dp" />-->
+        <!--</shape>-->
+    </item>
+    <item
+        android:state_focused="true"
+        android:state_enabled="true"
+        android:color="@android:color/white"
+        android:drawable="@android:color/transparent" />
+    <item
+        android:state_enabled="true"
+        android:color="@android:color/white" />
+    <!--<item android:drawable="@color/drawer_blue" android:state_activated="true"/>-->
+    <!--<item android:drawable="@color/drawer_blue" android:state_selected="true"/>-->
+    <!--<item android:drawable="@color/drawer_blue" android:state_pressed="true"/>-->
+    <!--<item android:drawable="@color/drawer_blue" android:state_checked="true"/>-->
+</selector>

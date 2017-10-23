@@ -2,7 +2,6 @@ package inside.langcard.presentation
 
 import android.app.Activity
 import android.content.Intent
-import inside.langcard.presentation.addcard.AddNewCardActivity
 
 /**
  * Created by Pasha on 10/15/2017.
@@ -16,7 +15,7 @@ enum class ActivityModes {
 class Commutator(private val activity: Activity) {
     fun goTo(mode: ActivityModes){
         when(mode) {
-            ActivityModes.AddNewCard -> startActivity(AddNewCardActivity::class.java, AddNewCardActivity.REQUEST_CODE)
+            //ActivityModes.AddNewCard -> startActivity(AddNewCardActivity::class.java, AddNewCardActivity.REQUEST_CODE)
             else -> {
 
             }

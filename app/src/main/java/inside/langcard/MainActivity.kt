@@ -9,24 +9,36 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import com.svp.infrastructure.mvpvs.commutate.ActivityOperationItem
+import com.svp.infrastructure.mvpvs.commutate.ICommutativeElement
 import com.svp.infrastructure.mvpvs.view.AppCompatActivityView
 import inside.langcard.R.id.*
+import inside.langcard.presentation.ActivityOperationResult
 import inside.langcard.presentation.main.MainPresenter
 import kotlinx.android.synthetic.main.main_activity.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
 class MainActivity : AppCompatActivityView<MainActivity, MainActivity.ViewState, MainPresenter>(),
-        NavigationView.OnNavigationItemSelectedListener {
+        NavigationView.OnNavigationItemSelectedListener, ICommutativeElement {
 
+    /*
+    * ICommutativeElement
+    * */
+    override val activity: Activity
+        get() = this
+    override val operation: ActivityOperationItem
+        get() = ActivityOperationResult.Main
+
+    /*
+    *
+    * */
     class ViewState(private val act:MainActivity) :
             com.svp.infrastructure.mvpvs.viewstate.ViewState<MainActivity>(act) {
 
         override val activity : Activity get() = act
         override fun restore() {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         }
         override fun saveState() {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         }
     }
 

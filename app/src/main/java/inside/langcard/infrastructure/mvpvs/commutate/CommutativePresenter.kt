@@ -8,8 +8,8 @@ import com.svp.infrastructure.mvpvs.view.IActivityView
 import com.svp.infrastructure.mvpvs.viewstate.IViewState
 
 abstract class CommutativePresenter
-    <V : IActivityView , VS : IViewState> :
-        Presenter<V, VS>() where V : ICommutativeElement {
+    <in V, VS : IViewState> :
+        Presenter<V, VS>() where V : IActivityView, V : ICommutativeElement {
 
     protected lateinit var commutator: ActivityCommutator
 

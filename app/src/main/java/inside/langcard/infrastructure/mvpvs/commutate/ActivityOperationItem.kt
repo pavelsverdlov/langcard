@@ -1,9 +1,6 @@
 package com.svp.infrastructure.mvpvs.commutate
 
-class ActivityOperationItem(
-        //    Undefined(0);
-
-        private val code: Int) {
+data class ActivityOperationItem(private val code: Int) {
     fun toInt(): Int {
         return code
     }

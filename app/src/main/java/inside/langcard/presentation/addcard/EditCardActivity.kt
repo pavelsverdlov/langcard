@@ -1,0 +1,69 @@
+package inside.langcard.presentation.addcard
+
+import android.app.Activity
+import android.os.Bundle
+import android.support.design.widget.BottomNavigationView
+import android.support.v7.app.AppCompatActivity
+import com.svp.infrastructure.mvpvs.commutate.ActivityOperationItem
+import com.svp.infrastructure.mvpvs.commutate.ICommutativeElement
+import com.svp.infrastructure.mvpvs.view.AppCompatActivityView
+import inside.langcard.R
+import inside.langcard.presentation.ActivityOperationResult
+import kotlinx.android.synthetic.main.activity_edit_card.*
+
+class EditCardActivity : AppCompatActivityView<EditCardActivity, EditCardActivity.ViewState, EditCardPresenter>(), ICommutativeElement {
+
+    /*
+    * ICommutativeElement
+    * */
+    override val activity: Activity
+        get() = this
+    override val operation: ActivityOperationItem
+        get() = ActivityOperationResult.AddEditCard
+
+
+
+    class ViewState(private val act:EditCardActivity) :
+            com.svp.infrastructure.mvpvs.viewstate.ViewState<EditCardActivity>(act) {
+
+        override val activity : Activity get() = act
+        override fun restore() {
+            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        }
+        override fun saveState() {
+            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        }
+
+        fun setText(txt: String){
+            activity.test_message.text = txt
+        }
+    }
+
+    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+        when (item.itemId) {
+            R.id.navigation_home -> {
+                //
+                presenter.click1()
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navigation_dashboard -> {
+//                message.setText(R.string.title_dashboard)
+                presenter.click2()
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navigation_notifications -> {
+//                message.setText(R.string.title_notifications)
+                presenter.click3()
+                return@OnNavigationItemSelectedListener true
+            }
+        }
+        false
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_edit_card)
+
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+    }
+}

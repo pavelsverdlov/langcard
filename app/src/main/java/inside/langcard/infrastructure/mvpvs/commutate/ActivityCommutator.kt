@@ -35,11 +35,14 @@ open class ActivityCommutator(private val element: ICommutativeElement) {
 
 
     fun goTo(operationTo: ActivityOperationItem) {
-        goTo(activities[operationTo]!!, null)
+        activities[operationTo]?.let {
+            goTo(it, null)
+        }
+        //goTo(activities[operationTo], null)
     }
 
     fun goTo(operationTo: ActivityOperationItem, bundleProvider: IBundleProvider) {
-        activities[operationTo]!!.let {
+        activities[operationTo]?.let {
             goTo(it, bundleProvider)
         }
 
@@ -48,5 +51,11 @@ open class ActivityCommutator(private val element: ICommutativeElement) {
     companion object {
         protected val activities: HashMap<ActivityOperationItem, Class<*>> =
                 HashMap<ActivityOperationItem, Class<*>>()
+
+
+            fun register(key: ActivityOperationItem, value: Class<*>) {
+                activities.put(key, value)
+            }
+
     }
 }

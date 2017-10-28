@@ -8,6 +8,7 @@ import com.svp.infrastructure.mvpvs.commutate.ActivityOperationItem
 import com.svp.infrastructure.mvpvs.commutate.ICommutativeElement
 import com.svp.infrastructure.mvpvs.view.AppCompatActivityView
 import inside.langcard.R
+import inside.langcard.domain.model.CardModel
 import inside.langcard.presentation.ActivityOperationResult
 import kotlinx.android.synthetic.main.activity_edit_card.*
 
@@ -26,6 +27,8 @@ class EditCardActivity : AppCompatActivityView<EditCardActivity, EditCardActivit
     class ViewState(private val act:EditCardActivity) :
             com.svp.infrastructure.mvpvs.viewstate.ViewState<EditCardActivity>(act) {
 
+        private lateinit var model : CardModel
+
         override val activity : Activity get() = act
         override fun restore() {
             TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
@@ -34,6 +37,8 @@ class EditCardActivity : AppCompatActivityView<EditCardActivity, EditCardActivit
             TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         }
 
+
+        fun setModel(m : CardModel) { model = m }
         fun setText(txt: String){
             activity.test_message.text = txt
         }

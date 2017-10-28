@@ -12,11 +12,18 @@ import android.view.MenuItem
 import com.svp.infrastructure.mvpvs.commutate.ActivityOperationItem
 import com.svp.infrastructure.mvpvs.commutate.ICommutativeElement
 import com.svp.infrastructure.mvpvs.view.AppCompatActivityView
-import inside.langcard.R.id.*
+import inside.langcard.R
 import inside.langcard.presentation.ActivityOperationResult
 import inside.langcard.presentation.main.MainPresenter
 import kotlinx.android.synthetic.main.main_activity.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import android.R.attr.x
+import android.graphics.Point
+import android.view.ViewGroup
+import android.widget.GridLayout
+import android.widget.LinearLayout
+import kotlinx.android.synthetic.main.content_main.*
+
 
 class MainActivity : AppCompatActivityView<MainActivity, MainActivity.ViewState, MainPresenter>(),
         NavigationView.OnNavigationItemSelectedListener, ICommutativeElement {
@@ -45,6 +52,7 @@ class MainActivity : AppCompatActivityView<MainActivity, MainActivity.ViewState,
     companion object {
 
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
@@ -65,6 +73,38 @@ class MainActivity : AppCompatActivityView<MainActivity, MainActivity.ViewState,
 
 
     }
+
+    fun setColumnCount(columns : Int){
+        val halfScreenWidth = getScreenWidth() / columns
+        val root = rootLayout
+        val layouts = arrayOfNulls<LinearLayout>(columns)
+        for (i in 0 until columns) {
+            layouts[i] = createLinearLayout(root, i, halfScreenWidth)
+        }
+    }
+
+    private fun getScreenSize(): Point {
+        val size = Point()
+        activity.windowManager.defaultDisplay.getSize(size)
+        return size
+    }
+
+    private fun getScreenWidth(): Int {
+        return getScreenSize().x
+    }
+
+    private fun createLinearLayout(root: GridLayout, index: Int, width: Int): LinearLayout {
+        val col = LinearLayout(layoutInflater.context)
+        col.orientation = LinearLayout.VERTICAL
+        col.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+
+        val param = GridLayout.LayoutParams(GridLayout.spec(0), GridLayout.spec(index))
+        param.width = width
+        root.addView(col, param)
+
+        return col
+    }
+
 
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {

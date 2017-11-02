@@ -3,6 +3,7 @@ package inside.langcard.presentation.addcard
 import android.content.Intent
 import com.svp.infrastructure.mvpvs.commutate.ActivityOperationItem
 import com.svp.infrastructure.mvpvs.commutate.CommutativePresenter
+import inside.langcard.domain.interactors.AddNewCardIteractor
 import inside.langcard.domain.model.CardModel
 import inside.langcard.presentation.ActivityOperationResult
 import java.util.*
@@ -15,13 +16,18 @@ class EditCardPresenter(override val id: UUID) : CommutativePresenter<EditCardAc
     override fun incomingResultFrom(from: ActivityOperationItem, data: Intent) {
         //get model from intend and set model to view state if it editing,
         // generate new one if it is addition new
-        state.setModel(CardModel())
+        state.model= CardModel()
     }
 
     override fun onAttachedView(view: EditCardActivity, intent: Intent) {
         //get model from intend and set model to view state if it editing,
         // generate new one if it is addition new
-        state.setModel(CardModel())
+        state.model = CardModel()
+    }
+
+    override fun onDetachedView(view: EditCardActivity) {
+        //AddNewCardIteractor().handle(state.model)
+        super.onDetachedView(view)
     }
 
     override fun getOperation(code: Int)= ActivityOperationResult.get(code)

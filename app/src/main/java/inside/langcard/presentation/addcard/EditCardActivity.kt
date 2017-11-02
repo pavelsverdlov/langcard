@@ -27,7 +27,13 @@ class EditCardActivity : AppCompatActivityView<EditCardActivity, EditCardActivit
     class ViewState(private val act:EditCardActivity) :
             com.svp.infrastructure.mvpvs.viewstate.ViewState<EditCardActivity>(act) {
 
-        private lateinit var model : CardModel
+        private lateinit var _model : CardModel
+        public var model : CardModel
+            get() = _model
+            set(value: CardModel) {
+                _model = value
+            }
+
 
         override val activity : Activity get() = act
         override fun restore() {
@@ -37,8 +43,6 @@ class EditCardActivity : AppCompatActivityView<EditCardActivity, EditCardActivit
             TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         }
 
-
-        fun setModel(m : CardModel) { model = m }
         fun setText(txt: String){
             activity.test_message.text = txt
         }

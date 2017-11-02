@@ -56,6 +56,11 @@ open class AppCompatActivityView<in V : IActivityView, VS : IViewState, out P> :
         presenter.onActivityResult(requestCode, resultCode, data)
     }
 
+    override fun onBackPressed() {
+        presenter.onBackPressed(this as V)
+        super.onBackPressed()
+    }
+
     //    protected final <B extends IBundleProvider> B getBundle(){
     //        return (B)bundleProvider;
     //    }

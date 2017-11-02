@@ -26,8 +26,13 @@ abstract class Presenter<in V : IActivityView, VS : IViewState> : IPresenter {
         onDetachedView(view)
     }
 
+    fun onBackPressed(view: V){
+        //state.onBackPressed
+        //TODO:
+    }
+
     protected open fun onAttachedView(view: V) {}
-    protected fun onDetachedView(view: V) {}
+    protected open fun onDetachedView(view: V) {}
 
     open fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
 

@@ -71,28 +71,29 @@ class MainActivity : AppCompatActivityView<MainActivity, MainActivity.ViewState,
 
         nav_view.setNavigationItemSelectedListener(this)
 
-
+        setColumnCount(2)
     }
 
-    fun setColumnCount(columns : Int){
+    /*
+    *
+    * Fill grid with LinearLayout columns
+    * */
+
+    private lateinit var layouts: Sequence<LinearLayout>
+    private fun setColumnCount(columns : Int){
         val halfScreenWidth = getScreenWidth() / columns
         val root = rootLayout
-        val layouts = arrayOfNulls<LinearLayout>(columns)
-        for (i in 0 until columns) {
-            layouts[i] = createLinearLayout(root, i, halfScreenWidth)
-        }
+        //val layouts = arrayOf<LinearLayout>(columns)
+        layouts = (0 until columns).map { i -> createLinearLayout(root, i, halfScreenWidth)}.asSequence()
     }
-
     private fun getScreenSize(): Point {
         val size = Point()
         activity.windowManager.defaultDisplay.getSize(size)
         return size
     }
-
     private fun getScreenWidth(): Int {
         return getScreenSize().x
     }
-
     private fun createLinearLayout(root: GridLayout, index: Int, width: Int): LinearLayout {
         val col = LinearLayout(layoutInflater.context)
         col.orientation = LinearLayout.VERTICAL
@@ -104,6 +105,11 @@ class MainActivity : AppCompatActivityView<MainActivity, MainActivity.ViewState,
 
         return col
     }
+
+    /*
+    *
+    * */
+
 
 
     override fun onBackPressed() {

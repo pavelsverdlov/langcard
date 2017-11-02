@@ -1,5 +1,7 @@
 package inside.langcard.data.dto
 
+import inside.langcard.data.UUIDBaseDto
+
 /**
  * Created by Pasha on 10/28/2017.
  * LearnCard is the ticket union in group for some list of learning
@@ -9,15 +11,15 @@ package inside.langcard.data.dto
  * - LearnTicket2
  * ...
  */
-class LearnCard(){
+class LearnCard : UUIDBaseDto(){
     /**
      * 0 - first
      * 1 - second
      */
     var learningSide: Int = 0
 
-    var first: OneSideCard? = null
-    var second: OneSideCard? = null
+    var first: OneSideCard = OneSideCard()
+    var second: OneSideCard = OneSideCard()
 
     var background: Int = 0
     var dictionary: CardDictionary? = null

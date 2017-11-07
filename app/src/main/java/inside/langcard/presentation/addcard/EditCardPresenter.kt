@@ -1,5 +1,7 @@
 package inside.langcard.presentation.addcard
 
+import android.app.Activity
+import android.app.Dialog
 import android.content.Intent
 import com.svp.infrastructure.mvpvs.commutate.ActivityOperationItem
 import com.svp.infrastructure.mvpvs.commutate.CommutativePresenter
@@ -13,6 +15,8 @@ import java.util.*
  */
 class EditCardPresenter(override val id: UUID) : CommutativePresenter<EditCardActivity, EditCardActivity.ViewState>() {
 
+    lateinit var activ : Activity
+
     override fun incomingResultFrom(from: ActivityOperationItem, data: Intent) {
         //get model from intend and set model to view state if it editing,
         // generate new one if it is addition new
@@ -20,6 +24,7 @@ class EditCardPresenter(override val id: UUID) : CommutativePresenter<EditCardAc
     }
 
     override fun onAttachedView(view: EditCardActivity, intent: Intent) {
+        activ = view
         //get model from intend and set model to view state if it editing,
         // generate new one if it is addition new
         state.model = CardModel()
@@ -33,6 +38,8 @@ class EditCardPresenter(override val id: UUID) : CommutativePresenter<EditCardAc
     override fun getOperation(code: Int)= ActivityOperationResult.get(code)
 
     fun click1(){
+        val dialog = Dialog(activ)
+
         state.setText("click1")
     }
     fun click2(){

@@ -53,17 +53,18 @@ class EditCardActivity : AppCompatActivityView<EditCardActivity, EditCardActivit
             R.id.navigation_home -> {
                 //
                 presenter.click1()
-                return@OnNavigationItemSelectedListener true
+
+                 true
             }
             R.id.navigation_dashboard -> {
 //                message.setText(R.string.title_dashboard)
                 presenter.click2()
-                return@OnNavigationItemSelectedListener true
+                 true
             }
             R.id.navigation_notifications -> {
 //                message.setText(R.string.title_notifications)
                 presenter.click3()
-                return@OnNavigationItemSelectedListener true
+                 true
             }
         }
         false

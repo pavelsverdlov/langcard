@@ -3,7 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/lang.card.iml" filepath="$PROJECT_DIR$/lang.card.iml" />
+      <module fileurl="file://C:\Users\Maxim\AndroidStudioProjects\langcard\lang.card.iml" filepath="C:\Users\Maxim\AndroidStudioProjects\langcard\lang.card.iml" />
+      <module fileurl="file://$PROJECT_DIR$/langcard.iml" filepath="$PROJECT_DIR$/langcard.iml" />
     </modules>
   </component>
 </project>

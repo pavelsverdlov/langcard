@@ -5,9 +5,9 @@ import android.app.Dialog
 import android.content.Intent
 import com.svp.infrastructure.mvpvs.commutate.ActivityOperationItem
 import com.svp.infrastructure.mvpvs.commutate.CommutativePresenter
-import inside.langcard.domain.interactors.AddNewCardIteractor
 import inside.langcard.domain.model.CardModel
 import inside.langcard.presentation.ActivityOperationResult
+import inside.langcard.presentation.Dialog.*
 import java.util.*
 
 /**
@@ -41,6 +41,15 @@ class EditCardPresenter(override val id: UUID) : CommutativePresenter<EditCardAc
         val dialog = Dialog(activ)
 
         state.setText("click1")
+
+        ViewDialog(activ).show(object : YesNoDialog.OnYesNoClickListener{
+            override fun onYesClick(){
+
+            }
+            override fun onNoClick(){
+
+            }
+        })
     }
     fun click2(){
         state.setText("click2")

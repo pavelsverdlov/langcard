@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivityView<MainActivity, MainActivity.ViewState,
         setContentView(R.layout.main_activity)
         setSupportActionBar(toolbar)
 
-        fab.setOnClickListener { view ->
+        fa  b.setOnClickListener { view ->
             presenter.addNewCard()
 //            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                    .setAction("Action", null).show()

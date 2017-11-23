@@ -124,7 +124,7 @@ interface IDialogListener{}
         }
 
           fun show(title: String){
-              ViewExtensions.findViewById<TextView>(view, R.id.edit_dialog_titl)
+              ViewExtensions.findViewById<TextView>(view, R.id.edit_dialog_title)
                       .setText(title)
                       dialog.show()
         }

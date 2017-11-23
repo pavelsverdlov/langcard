@@ -52,9 +52,9 @@ interface IDialogListener{}
         fun create(context: Context, inflater: LayoutInflater): YesNoDialog {
             view = inflater.inflate(R.layout.yes_no_dialog, null)
             val builder: AlertDialog.Builder = AlertDialog.Builder(context)
-
-            dialog = builder.create()
             builder.setView(view)
+            dialog = builder.create()
+
 
             return this
         }
@@ -86,11 +86,11 @@ interface IDialogListener{}
         }
 
         fun create(context: Context, inflater: LayoutInflater): EditDialog{
-            view = inflater.inflate(R.layout.fragment_add_dictionary_popup, null)  //TODO: set correct layout
+            view = inflater.inflate(R.layout.fragment_add_dictionary_popup, null)
             val builder: AlertDialog.Builder = AlertDialog.Builder(context)
-
-            dialog = builder.create()
             builder.setView(view)
+            dialog = builder.create()
+
 
             val no:ImageButton = view.findViewById(R.id.actionbar_bottom_btn_no)
             no.setOnClickListener(View.OnClickListener {
@@ -144,6 +144,8 @@ class ViewDialog(val activ: Activity) {
                     .show()
         }
     }
+
+
 
 
 }

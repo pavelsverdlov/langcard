@@ -52,7 +52,14 @@ class EditCardPresenter(override val id: UUID) : CommutativePresenter<EditCardAc
         })
     }
     fun click2(){
+
         state.setText("click2")
+        ViewDialog(activ).show(object: EditDialog.OnOkClickListener{
+            override fun onOkClick(newText: String) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
+            }
+        })
     }
     fun click3(){
         state.setText("click3")

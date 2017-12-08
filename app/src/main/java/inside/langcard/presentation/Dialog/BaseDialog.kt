@@ -80,7 +80,7 @@ interface IDialogListener{}
         }
     }
 
-    class EditDialog() : BaseDialog() {
+    class EditDialog : BaseDialog() {
         interface OnOkClickListener : IDialogListener{
             fun onOkClick(newText : String)
         }

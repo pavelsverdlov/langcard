@@ -23,7 +23,7 @@ abstract class BaseDialog {
     protected lateinit var dialog : Dialog
     lateinit var view: View
 
-   fun show() = dialog.show()
+    fun show() = dialog.show()
     fun close() = dialog.cancel()
     fun alert(activity: Activity, title: String, message: String): AlertDialog? {
         return AlertDialog.Builder(activity)
@@ -139,6 +139,10 @@ class ViewDialog(val activ: Activity) {
                     .setOnYesNoClickListener(listener)
                     .show()
             is EditDialog.OnOkClickListener -> EditDialog()
+                    .create(activ)
+                    .setOnOkClickListener(listener)
+                    .show()
+            is SelectColorPopup.OnOkClickListener -> SelectColorPopup()
                     .create(activ)
                     .setOnOkClickListener(listener)
                     .show()

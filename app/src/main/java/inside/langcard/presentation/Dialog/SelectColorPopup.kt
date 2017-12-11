@@ -1,5 +1,6 @@
 package inside.langcard.presentation.Dialog
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.view.LayoutInflater
@@ -13,31 +14,40 @@ import inside.langcard.R
  */
 
 class SelectColorPopup:BaseDialog() {
-
+    interface OnOkClickListener : IDialogListener{
+        fun onOkClick(color : CardColors)
+    }
     //val colors:Array<CardColors> = CardColors.values()
 
+    lateinit var grid:GridView
+
+    fun create(activity: Activity): SelectColorPopup{
+        return create(activity, activity.layoutInflater)
+    }
     fun create(context: Context, inflater: LayoutInflater): SelectColorPopup{
         view = inflater.inflate(R.layout.select_colors_template, null)
         val builder:AlertDialog.Builder = AlertDialog.Builder(context)
         builder.setView(view)
         dialog = builder.create()
 
-
-
-
-        val grid:GridView = view.findViewById(R.id.grid_colors)
+        grid = view.findViewById(R.id.grid_colors)
         grid.adapter = DisplayColorAdapter(inflater)
-        grid.setOnItemClickListener(AdapterView.OnItemClickListener{ adapterView: AdapterView<*>, view1: View, i: Int, l: Long ->
-            dialog.cancel()
-            })
 
+        return this
+    }
+
+    fun setOnOkClickListener(listener: OnOkClickListener): SelectColorPopup{
+        grid.setOnItemClickListener({ adapterView: AdapterView<*>, view1: View, i: Int, l: Long ->
+            listener.onOkClick( CardColors.values()[i])
+            dialog.cancel()
+        })
         return this
     }
 
     open class DisplayColorAdapter(val inflater: LayoutInflater) : BaseAdapter(){
 
         override fun getCount(): Int {
-        return CardColors.values().size
+            return CardColors.values().size
         }
 
         override fun getItemId(position: Int): Long {
@@ -45,7 +55,7 @@ class SelectColorPopup:BaseDialog() {
         }
 
         override fun getItem(position: Int): Any {
-        return CardColors.values()[position]
+            return CardColors.values()[position]
         }
 
         override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {

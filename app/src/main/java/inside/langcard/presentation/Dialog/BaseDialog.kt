@@ -142,10 +142,11 @@ class ViewDialog(val activ: Activity) {
                     .create(activ)
                     .setOnOkClickListener(listener)
                     .show()
-            is SelectColorPopup.OnOkClickListener -> SelectColorPopup()
+            is SelectColorPopup.OnColorClickListener -> SelectColorPopup()
                     .create(activ)
-                    .setOnOkClickListener(listener)
+                    .setOnColorClickListener(listener)
                     .show()
+
         }
     }
 

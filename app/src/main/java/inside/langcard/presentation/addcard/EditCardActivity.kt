@@ -64,7 +64,7 @@ class EditCardActivity : AppCompatActivityView<EditCardActivity, EditCardActivit
                  true
             }
             R.id.navigation_notifications -> {
-               //   message.setText(R.string.title_notifications)
+                 // message.setText(R.string.title_notifications)
                 test_message.setText(R.string.title_notifications)
                 presenter.click3()
                  true

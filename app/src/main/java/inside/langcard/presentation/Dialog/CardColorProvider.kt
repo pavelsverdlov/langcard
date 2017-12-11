@@ -9,7 +9,7 @@ import inside.langcard.R
 /**
  * Created by Maxim on 12/10/2017.
  */
-class CardColorProvider{
+open class CardColorProvider{
     fun getDrawableSecondBackground (color:CardColors): Drawable{
         return ColorDrawable(getColorIntSecondBackground(color))
     }
@@ -32,9 +32,7 @@ class CardColorProvider{
             CardColors.Brown -> icolor = Color.parseColor("#795548")
             CardColors.Grey -> icolor = Color.parseColor("#9E9E9E")
             CardColors.Pink -> icolor = Color.parseColor("#E91E63")
-            else->{
-                icolor = Color.parseColor("#CCCCCC")
-            }
+
         }
         return icolor
     }
@@ -60,7 +58,6 @@ class CardColorProvider{
             CardColors.Brown -> return Color.parseColor("#8D6E63")
             CardColors.Grey -> return Color.parseColor("#BDBDBD")
         }
-        //return Color.parseColor("#FFFFFF") unreacheble statement
     }
 
     fun getDrawableBackgroundId(color: CardColors): Int{
@@ -80,6 +77,5 @@ class CardColorProvider{
             CardColors.Brown -> return R.drawable.ticket_background_brown
             CardColors.Grey -> return R.drawable.ticket_background_gray
         }
-        return R.drawable.ticket_background_white
     }
 }

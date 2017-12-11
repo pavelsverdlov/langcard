@@ -14,10 +14,9 @@ import inside.langcard.R
  */
 
 class SelectColorPopup:BaseDialog() {
-    interface OnOkClickListener : IDialogListener{
-        fun onOkClick(color : CardColors)
+    interface OnColorClickListener : IDialogListener{
+        fun onColorClick(color : CardColors)
     }
-    //val colors:Array<CardColors> = CardColors.values()
 
     lateinit var grid:GridView
 
@@ -36,13 +35,15 @@ class SelectColorPopup:BaseDialog() {
         return this
     }
 
-    fun setOnOkClickListener(listener: OnOkClickListener): SelectColorPopup{
+    fun setOnColorClickListener(listener: OnColorClickListener): SelectColorPopup{
         grid.setOnItemClickListener({ adapterView: AdapterView<*>, view1: View, i: Int, l: Long ->
-            listener.onOkClick( CardColors.values()[i])
+            listener.onColorClick( CardColors.values()[i])
             dialog.cancel()
         })
         return this
     }
+
+
 
     open class DisplayColorAdapter(val inflater: LayoutInflater) : BaseAdapter(){
 
@@ -61,7 +62,8 @@ class SelectColorPopup:BaseDialog() {
         override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
             val itemTemplate: View = inflater.inflate(R.layout.select_color_item_template, parent, false)
             val container: FrameLayout = itemTemplate.findViewById(R.id.select_color_frame)
-            //container.setBackgroundColor(CardColors.)
+            val backgroundColor = CardColorProvider()
+            container.setBackgroundColor(backgroundColor.getColorIntBackground(CardColors.values()[position]))
             return itemTemplate
         }
 

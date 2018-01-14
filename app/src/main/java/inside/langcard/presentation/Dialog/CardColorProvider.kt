@@ -14,7 +14,7 @@ open class CardColorProvider{
         return ColorDrawable(getColorIntSecondBackground(color))
     }
 
-    private fun getColorIntSecondBackground(color: CardColors): Int {
+     fun getColorIntSecondBackground(color: CardColors): Int {
 
         val icolor:Int
         when(color){

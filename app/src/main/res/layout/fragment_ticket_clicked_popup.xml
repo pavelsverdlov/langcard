@@ -1,0 +1,89 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/default_background_color"
+    android:id="@+id/frame_ticket_clicked_base"
+    android:orientation="vertical"
+    tools:context="home.svp.langs.card.TicketClickedPopup">
+    <!--http://www.perfectgirls.net/367582/Good_looking_woman_in_blue_dress__Kendra_Lust_is_having_gentle_anal_sex_with_her_lover-->
+    <GridLayout
+        android:layout_margin="10dp"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:columnCount="1"
+        android:rowCount="4"
+        >
+        <RelativeLayout
+            android:id="@+id/frame_ticket_clicked_top"
+            android:layout_row="0"
+            android:minHeight="100dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:paddingBottom="@dimen/fragment_padding">
+                <Button
+                    android:gravity="start|center_vertical"
+                    android:textSize="@dimen/title_btn_text_size"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/popup_show_language"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:contentDescription="Turn over card"
+                    android:text="Language" />
+            <LinearLayout
+                android:id="@+id/frame_card_popup_separator"
+                android:layout_below="@+id/popup_show_language"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:orientation="horizontal" />
+            <TextView
+                android:layout_below="@+id/frame_card_popup_separator"
+                style="@style/input_text_control"
+                android:id="@+id/popup_show_learning_text"
+                android:textColor="@android:color/black"
+                android:text="Hi!" />
+        </RelativeLayout>
+
+        <FrameLayout
+            android:layout_gravity="top"
+            android:layout_row="1"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp">
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+                    <ImageButton
+                        android:id="@+id/actionbar_bottom_btn_ok"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_accept"
+                        android:layout_marginRight="2.5dp"
+                        />
+                    <ImageButton
+                        android:layout_marginLeft="2.5dp"
+                        android:id="@+id/actionbar_bottom_btn_no"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_action_cancel"
+                        />
+            </LinearLayout>
+        </FrameLayout>
+    </GridLayout>
+    <!--android:id="@+id/actionbar_bottom_btn_edit"-->
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/actionbar_bottom_btn_edit"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="32dp"
+        app:backgroundTint="@color/colorPrimary"
+        android:src="@drawable/ic_mode_edit_black_24dp" />
+</FrameLayout>

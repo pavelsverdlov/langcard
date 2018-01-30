@@ -6,8 +6,6 @@ import inside.langcard.presentation.Dialog.CardColors
  * Created by Pasha on 10/28/2017.
  */
 class CardModel{
-    private var _sideType : SideTypes = SideTypes.Front
-
     private var isChanged: Boolean = false
     private var isNew: Boolean = false
     private var isRemoved: Boolean = false
@@ -15,32 +13,48 @@ class CardModel{
 
 
 
-    val first : CardSideMode = CardSideMode()
-    val second : CardSideMode = CardSideMode()
+    val first : CardSideMode = CardSideMode(SideTypes.Front,"Front",CardLanguageModel())
+    val second : CardSideMode = CardSideMode(SideTypes.Back,"Back",CardLanguageModel())
 
-    val sideType : SideTypes get() = _sideType
+    val currentSide : CardSideMode = first
 
-    fun getInvertOfCurrentSideType():SideTypes{// foo method
+    val sideType : SideTypes get() = currentSide.side
 
-        return return SideTypes.Back
+    fun getInvertOfCurrentSideType():SideTypes{
+        return when(currentSide.side){
+            SideTypes.Back ->  SideTypes.Front
+            SideTypes.Front ->  SideTypes.Back
+        }
     }
-    fun getLearningText(type:SideTypes):Array<String>{// foo method
-        return emptyArray()  //Array<String>(0,{i->""}) the 2nd way how to create empty array :)
+    fun getLearningText(type:SideTypes): String{
+        return mutableListOf(first, second).first{x -> x.side == type}.learningText
     }
-    fun getLanguage(type: SideTypes): String{//foo method
-
-        return ""
+    fun getLanguage(type: SideTypes): CardLanguageModel{
+        return mutableListOf(first, second).first{x -> x.side == type}.language
     }
     fun getBackground(): CardColors{ //foo method
         return CardColors.Blue
     }
+    fun turnOver(){
 
-
+    }
 }
 
-class CardSideMode {
-    private lateinit var _learningText: String
-    public var learningText : String
+class CardSideMode(private var _side : SideTypes, private var _learningText : String, private var _language: CardLanguageModel) {
+    //private lateinit var  _language: CardLanguageModel
+   // private lateinit var  _side: SideTypes
+   // private lateinit var _learningText: String
+
+    var language: CardLanguageModel
+        get() =  _language
+        set(value) { _language = value }
+
+    var side: SideTypes
+        get() =  _side
+        set(value) { _side = value }
+
+
+    var learningText : String
         get() = _learningText
         set(value) {
             _learningText = value

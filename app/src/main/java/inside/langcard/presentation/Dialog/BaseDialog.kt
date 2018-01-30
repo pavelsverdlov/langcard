@@ -146,7 +146,10 @@ class ViewDialog(val activ: Activity) {
                     .create(activ)
                     .setOnColorClickListener(listener)
                     .show()
-
+            is ShowCardPopup.OnShowTicketClickListener ->ShowCardPopup()
+                    .create(activ)
+                    .setOnColorClickListener(listener)
+                    .show()
         }
     }
 

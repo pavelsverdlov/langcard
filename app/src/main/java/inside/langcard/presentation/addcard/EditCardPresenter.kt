@@ -56,16 +56,18 @@ class EditCardPresenter(override val id: UUID) : CommutativePresenter<EditCardAc
         state.setText("click2")
         ViewDialog(activ).show(object: EditDialog.OnOkClickListener{
             override fun onOkClick(newText: String) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 
             }
         })
     }
     fun click3(){
         state.setText("click3")
-        ViewDialog(activ).show(object:SelectColorPopup.OnColorClickListener{
-            override fun onColorClick(color: CardColors) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        ViewDialog(activ).show(object:ShowCardPopup.OnShowTicketClickListener{
+            override fun onOkClick() {
+
+            }
+
+            override fun onNoClick() {
             }
         })
     }

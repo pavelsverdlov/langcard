@@ -1,5 +1,6 @@
 package inside.langcard.presentation.Dialog
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.content.res.ColorStateList
@@ -29,7 +30,7 @@ open class ShowCardPopup : BaseDialog(){
     private lateinit var ok : ImageButton
     private lateinit var no : ImageButton
 
-    fun create(context: Context, inflater: LayoutInflater){
+    fun create(context: Context, inflater: LayoutInflater): ShowCardPopup {
     view = inflater.inflate(R.layout.fragment_ticket_clicked_popup, null)
      val builder:AlertDialog.Builder = AlertDialog.Builder(context)
      builder.setView(view)
@@ -37,7 +38,12 @@ open class ShowCardPopup : BaseDialog(){
 
      ok = view.findViewById(R.id.actionbar_bottom_btn_ok)
      no = view.findViewById(R.id.actionbar_bottom_btn_no)
+        return this
  }
+
+    fun create(activity: Activity): ShowCardPopup{
+        return create(activity, activity.layoutInflater)
+    }
 
     fun setOnColorClickListener(listener: OnShowTicketClickListener): ShowCardPopup {
         ok.setOnClickListener({
@@ -63,7 +69,7 @@ open class ShowCardPopup : BaseDialog(){
         txt.setText(ticket.getLearningText(type))
 
         val lang: Button = ViewExtensions.findViewById(view, R.id.popup_show_language)
-        lang.setText(ticket.getLanguage(type).getTitle().toUpperCase())  // TODO: find out whats problem with getTitle
+        lang.setText(ticket.getLanguage(type).getTitle().toUpperCase())
         val edit: FloatingActionButton = ViewExtensions.findViewById(view, R.id.actionbar_bottom_btn_edit)
 
         val pr = CardColorProvider()
@@ -79,7 +85,6 @@ open class ShowCardPopup : BaseDialog(){
         edit.setBackgroundTintList(ColorStateList.valueOf(backColor))
 
        /*
-       TODO: will implement when find out what is RootColtroller
        *  if(controller.getSelectedDictionary().isLearned()) {
             view.findViewById(R.id.actionbar_bottom_btn_ok).setVisibility(View.GONE);
             view.findViewById(R.id.actionbar_bottom_btn_no).setVisibility(View.GONE);

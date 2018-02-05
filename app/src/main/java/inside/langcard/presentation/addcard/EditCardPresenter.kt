@@ -69,6 +69,10 @@ class EditCardPresenter(override val id: UUID) : CommutativePresenter<EditCardAc
 
             override fun onNoClick() {
             }
+
+            override fun onEditClick() {
+
+            }
         })
     }
 }

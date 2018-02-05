@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.content.res.ColorStateList
+import android.media.Image
 import android.support.design.widget.FloatingActionButton
 import android.view.LayoutInflater
 import android.view.View
@@ -24,11 +25,8 @@ open class ShowCardPopup : BaseDialog(){
     interface OnShowTicketClickListener : IDialogListener{
         fun onNoClick()
         fun onOkClick()
+        fun onEditClick()
     }
-
-
-    private lateinit var ok : ImageButton
-    private lateinit var no : ImageButton
 
     fun create(context: Context, inflater: LayoutInflater): ShowCardPopup {
     view = inflater.inflate(R.layout.fragment_ticket_clicked_popup, null)
@@ -36,8 +34,7 @@ open class ShowCardPopup : BaseDialog(){
      builder.setView(view)
      dialog = builder.create()
 
-     ok = view.findViewById(R.id.actionbar_bottom_btn_ok)
-     no = view.findViewById(R.id.actionbar_bottom_btn_no)
+
         return this
  }
 
@@ -46,18 +43,21 @@ open class ShowCardPopup : BaseDialog(){
     }
 
     fun setOnColorClickListener(listener: OnShowTicketClickListener): ShowCardPopup {
-        ok.setOnClickListener({
-            fun onClick(v: View) {
-                dialog.cancel()
-                listener.onOkClick()
-            }
-        })
-        no.setOnClickListener({
-            fun onClick (v:View){
-                dialog.cancel()
-                listener.onNoClick()
-            }
-        })
+        ViewExtensions.findViewById<ImageButton>(view, R.id.actionbar_bottom_btn_ok)
+                .setOnClickListener({
+                    listener.onOkClick()
+                    dialog.cancel()
+                })
+        ViewExtensions.findViewById<ImageButton>(view, R.id.actionbar_bottom_btn_no)
+                .setOnClickListener( {
+                    listener.onNoClick()
+                    dialog.cancel()
+                })
+        ViewExtensions.findViewById<ImageButton>(view, R.id.actionbar_bottom_btn_edit)
+                .setOnClickListener({
+                    listener.onEditClick()
+                    dialog.cancel()
+                })
         return this
     }
 

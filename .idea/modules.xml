@@ -3,7 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/langcard.iml" filepath="$PROJECT_DIR$/langcard.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lang.card.iml" filepath="$PROJECT_DIR$/lang.card.iml" />
+      <module fileurl="file://C:\Storage\projects\sv\mobile\lang.card\langcard.iml" filepath="C:\Storage\projects\sv\mobile\lang.card\langcard.iml" />
     </modules>
   </component>
 </project>

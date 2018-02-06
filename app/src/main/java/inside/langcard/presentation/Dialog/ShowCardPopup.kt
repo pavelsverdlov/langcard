@@ -20,7 +20,7 @@ import inside.langcard.domain.model.SideTypes
  * Created by Maxim on 12/25/2017.
  */
 open class ShowCardPopup : BaseDialog(){
-     var type:SideTypes = CardModel().sideType
+     var type:SideTypes = CardModel("111").sideType
 
     interface OnShowTicketClickListener : IDialogListener{
         fun onNoClick()

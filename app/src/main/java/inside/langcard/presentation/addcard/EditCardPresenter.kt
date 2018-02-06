@@ -20,14 +20,14 @@ class EditCardPresenter(override val id: UUID) : CommutativePresenter<EditCardAc
     override fun incomingResultFrom(from: ActivityOperationItem, data: Intent) {
         //get model from intend and set model to view state if it editing,
         // generate new one if it is addition new
-        state.model= CardModel()
+        state.model= CardModel("112")
     }
 
     override fun onAttachedView(view: EditCardActivity, intent: Intent) {
         activ = view
         //get model from intend and set model to view state if it editing,
         // generate new one if it is addition new
-        state.model = CardModel()
+        state.model = CardModel("112")
     }
 
     override fun onDetachedView(view: EditCardActivity) {

@@ -1,11 +1,16 @@
 package inside.langcard.domain.model
 
 import inside.langcard.presentation.Dialog.CardColors
+import com.svp.infrastructure.common.StringHelper
+import java.util.*
+
 
 /**
  * Created by Pasha on 10/28/2017.
+ *
+ * id - identifier from database
  */
-class CardModel{
+class CardModel(val id :String){
     private var isChanged: Boolean = false
     private var isNew: Boolean = false
     private var isRemoved: Boolean = false
@@ -13,13 +18,16 @@ class CardModel{
 
 
 
-    val first : CardSideMode = CardSideMode(SideTypes.Front,"Front",CardLanguageModel())
-    val second : CardSideMode = CardSideMode(SideTypes.Back,"Back",CardLanguageModel())
+    val first : CardSideMode = CardSideMode(SideTypes.Front,"Front-" + java.util.UUID.randomUUID().toString().substring(0,5),CardLanguageModel())
+    val second : CardSideMode = CardSideMode(SideTypes.Back,"Back-"+ java.util.UUID.randomUUID().toString().substring(0,5),CardLanguageModel())
 
     val currentSide : CardSideMode = first
-
     val sideType : SideTypes get() = currentSide.side
 
+
+    fun getDisplayLearningText(): Array<String> {
+        return StringHelper.splitByLineSeparator(currentSide.learningText)
+    }
     fun getInvertOfCurrentSideType():SideTypes{
         return when(currentSide.side){
             SideTypes.Back ->  SideTypes.Front

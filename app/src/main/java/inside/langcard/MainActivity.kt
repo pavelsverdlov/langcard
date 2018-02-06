@@ -2,27 +2,20 @@ package inside.langcard
 
 import android.app.Activity
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
-import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import com.svp.infrastructure.mvpvs.commutate.ActivityOperationItem
 import com.svp.infrastructure.mvpvs.commutate.ICommutativeElement
 import com.svp.infrastructure.mvpvs.view.AppCompatActivityView
-import inside.langcard.R
+import inside.langcard.domain.model.CardModel
 import inside.langcard.presentation.ActivityOperationResult
+import inside.langcard.presentation.ContentViewer
 import inside.langcard.presentation.main.MainPresenter
-import kotlinx.android.synthetic.main.main_activity.*
 import kotlinx.android.synthetic.main.app_bar_main.*
-import android.R.attr.x
-import android.graphics.Point
-import android.view.ViewGroup
-import android.widget.GridLayout
-import android.widget.LinearLayout
-import kotlinx.android.synthetic.main.content_main.*
+import kotlinx.android.synthetic.main.main_activity.*
 
 
 class MainActivity : AppCompatActivityView<MainActivity, MainActivity.ViewState, MainPresenter>(),
@@ -53,6 +46,8 @@ class MainActivity : AppCompatActivityView<MainActivity, MainActivity.ViewState,
 
     }
 
+    private lateinit var viewer : ContentViewer
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
@@ -71,45 +66,25 @@ class MainActivity : AppCompatActivityView<MainActivity, MainActivity.ViewState,
 
         nav_view.setNavigationItemSelectedListener(this)
 
-        setColumnCount(2)
+        viewer = ContentViewer(this)
+        viewer.onCreateView(getFakeCards(),2, object  : ContentViewer.OnCardListener{
+            override fun onClick(card: CardModel){
+
+            }
+        })
     }
 
-    /*
-    *
-    * Fill grid with LinearLayout columns
-    * */
 
-    private lateinit var layouts: Sequence<LinearLayout>
-    private fun setColumnCount(columns : Int){
-        val halfScreenWidth = getScreenWidth() / columns
-        val root = rootLayout
-        //val layouts = arrayOf<LinearLayout>(columns)
-        layouts = (0 until columns).map { i -> createLinearLayout(root, i, halfScreenWidth)}.asSequence()
-    }
-    private fun getScreenSize(): Point {
-        val size = Point()
-        activity.windowManager.defaultDisplay.getSize(size)
-        return size
-    }
-    private fun getScreenWidth(): Int {
-        return getScreenSize().x
-    }
-    private fun createLinearLayout(root: GridLayout, index: Int, width: Int): LinearLayout {
-        val col = LinearLayout(layoutInflater.context)
-        col.orientation = LinearLayout.VERTICAL
-        col.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-
-        val param = GridLayout.LayoutParams(GridLayout.spec(0), GridLayout.spec(index))
-        param.width = width
-        root.addView(col, param)
-
-        return col
-    }
 
     /*
     *
     * */
 
+    fun getFakeCards() : List<CardModel>{
+        return MutableList(10){
+            index -> CardModel(index.toString())
+        }
+    }
 
 
     override fun onBackPressed() {

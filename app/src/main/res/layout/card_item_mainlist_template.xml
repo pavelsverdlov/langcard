@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp" >
+    <FrameLayout
+        android:id="@+id/ticket_item_container"
+        android:background="@drawable/shadow_yellow"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="107dp">
+        <TextView
+            android:id="@+id/ticket_item_langs"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/fragment_margin"
+            android:textColor="@android:color/secondary_text_light"
+            android:gravity="end" />
+        <ListView
+            android:id="@+id/learning_listOfFirst"
+            android:layout_margin="5dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:listSelector="@android:color/transparent"
+            android:cacheColorHint="@android:color/transparent"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:layout_gravity="center" />
+    </FrameLayout>
+    <!--
+    auto resize text
+    http://stackoverflow.com/questions/5033012/auto-scale-textview-text-to-fit-within-bounds/17782522#17782522
+    -->
+</LinearLayout>

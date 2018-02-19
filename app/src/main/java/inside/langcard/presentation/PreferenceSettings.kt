@@ -11,14 +11,14 @@ import android.preference.Preference
 /**
  * Created by Pasha on 10/28/2017.
  */
-abstract class PreferenceSettings(val activity : Activity){
+abstract class PreferenceSettings(val context : Context){
     companion object {
         private val KEY_PREFERENCES_VERSION = "key_preferences_version"
         private val PREFERENCES_VERSION = 1
     }
 
     private val preferences: SharedPreferences =
-            activity.getSharedPreferences(activity.packageName, Context.MODE_PRIVATE)
+            context.getSharedPreferences(context.packageName, Context.MODE_PRIVATE)
 
     init {
         checkPreferences(preferences)

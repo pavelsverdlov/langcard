@@ -1,5 +1,7 @@
 package inside.langcard.data
 
+import android.database.Cursor
+import android.database.sqlite.SQLiteDatabase
 import inside.langcard.R
 import inside.langcard.data.dto.LearnCard
 import kotlinx.android.synthetic.main.activity_edit_card.*
@@ -28,7 +30,17 @@ abstract class  BaseRepository<TEntity : UUIDBaseDto>{
         return SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
     }
 }
-class CardRepository : BaseRepository<LearnCard>(){
+class CardRepository(private val storage : DatabaseStorage) : BaseRepository<LearnCard>(){
+
+    private val db: SQLiteDatabase = open()
+
+    fun open(): SQLiteDatabase {
+        //todo: can be exception if path is incorrect
+        return SQLiteDatabase.openOrCreateDatabase(storage.path, null)
+    }
+    fun close(){
+        db.close()
+    }
 
     override fun remove(add: LearnCard) {
 
@@ -40,6 +52,10 @@ class CardRepository : BaseRepository<LearnCard>(){
             val dcreated = getDateFormatter().format(created)
             val q = "$insertSide ('$id', '$dcreated', '$learningText', $language, $correctCount, $incorrectCount);"
         }
+    }
+
+    fun get(query : String): Cursor {
+        return db.rawQuery(query, null)
     }
 
 }

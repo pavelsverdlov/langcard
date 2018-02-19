@@ -9,6 +9,7 @@ import com.svp.infrastructure.mvpvs.presenter.IPresenter
 import com.svp.infrastructure.mvpvs.view.IActivityView
 import com.svp.infrastructure.mvpvs.viewstate.IViewState
 import inside.langcard.presentation.ActivityOperationResult
+import inside.langcard.presentation.UserSettings
 import inside.langcard.presentation.addcard.EditCardActivity
 import inside.langcard.presentation.addcard.EditCardPresenter
 import inside.langcard.presentation.main.MainPresenter
@@ -23,6 +24,7 @@ class App : Application(){
     }
 
     override fun onCreate() {
+        val userSett = UserSettings(this)
 
         ActivityCommutator.register(ActivityOperationResult.Main, MainActivity::class.java)
         ActivityCommutator.register(ActivityOperationResult.AddEditCard, EditCardActivity::class.java)
@@ -31,7 +33,7 @@ class App : Application(){
 
         Registrator.register(MainActivity::class.java,
            object: PresenterContainer.IPresenterCreator {
-            override fun create(): IPresenter = MainPresenter(UUID.randomUUID())
+            override fun create(): IPresenter = MainPresenter(UUID.randomUUID(), userSett)
         }, object: ViewStateContainer.IViewStateCreator {
             override fun <V : IActivityView> create(view: V): IViewState = MainActivity.ViewState(view as MainActivity)
         })

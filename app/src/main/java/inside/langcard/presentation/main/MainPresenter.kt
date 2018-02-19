@@ -6,13 +6,22 @@ import com.svp.infrastructure.mvpvs.commutate.CommutativePresenter
 import com.svp.infrastructure.mvpvs.presenter.IPresenter
 import com.svp.infrastructure.mvpvs.presenter.Presenter
 import inside.langcard.MainActivity
+import inside.langcard.data.CardRepository
+import inside.langcard.domain.Consts
+import inside.langcard.domain.interactors.GetCardsIteractor
+import inside.langcard.domain.model.CardDictionaryModel
+import inside.langcard.domain.model.CardModel
 import inside.langcard.presentation.ActivityOperationResult
+import inside.langcard.presentation.UserSettings
 import java.util.*
 
 /**
  * Created by Pasha on 10/22/2017.
  */
-class MainPresenter(override val id: UUID) : CommutativePresenter<MainActivity, MainActivity.ViewState>() {
+class MainPresenter(override val id: UUID, val settings : UserSettings) : CommutativePresenter<MainActivity, MainActivity.ViewState>() {
+    private var seletctedDictionary : CardDictionaryModel = Consts.dictionaryAll
+
+
     override fun onAttachedView(view: MainActivity, intent: Intent) {
     }
 
@@ -25,4 +34,7 @@ class MainPresenter(override val id: UUID) : CommutativePresenter<MainActivity, 
     fun addNewCard(){
         commutator.goTo(ActivityOperationResult.AddEditCard)
     }
+
+    fun getCards(): List<CardModel> = GetCardsIteractor(settings.storage).handle(seletctedDictionary)
+
 }

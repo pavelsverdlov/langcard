@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivityView<MainActivity, MainActivity.ViewState,
         nav_view.setNavigationItemSelectedListener(this)
 
         viewer = ContentViewer(this)
-        viewer.onCreateView(getFakeCards(),2, object  : ContentViewer.OnCardListener{
+        viewer.onCreateView(presenter.getCards(),2, object  : ContentViewer.OnCardListener{
             override fun onClick(card: CardModel){
 
             }
@@ -80,11 +80,7 @@ class MainActivity : AppCompatActivityView<MainActivity, MainActivity.ViewState,
     *
     * */
 
-    fun getFakeCards() : List<CardModel>{
-        return MutableList(10){
-            index -> CardModel(index.toString())
-        }
-    }
+
 
 
     override fun onBackPressed() {

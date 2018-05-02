@@ -1,5 +1,7 @@
 package inside.langcard.domain.model
 
+import android.os.Parcel
+import android.os.Parcelable
 import inside.langcard.presentation.Dialog.CardColors
 import com.svp.infrastructure.common.StringHelper
 import java.util.*
@@ -10,7 +12,7 @@ import java.util.*
  *
  * id - identifier from database
  */
-class CardModel(val id :String){
+class CardModel(val id :String) {
     private var isChanged: Boolean = false
     private var isNew: Boolean = false
     private var isRemoved: Boolean = false
@@ -46,6 +48,8 @@ class CardModel(val id :String){
     fun turnOver(){
 
     }
+
+
 }
 
 class CardSideMode(private var _side : SideTypes, private var _learningText : String, private var _language: CardLanguageModel) {

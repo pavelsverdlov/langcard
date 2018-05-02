@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivityView<MainActivity, MainActivity.ViewState,
         viewer = ContentViewer(this)
         viewer.onCreateView(presenter.getCards(),2, object  : ContentViewer.OnCardListener{
             override fun onClick(card: CardModel){
-
+                presenter.editCard(card)
             }
         })
     }

@@ -7,7 +7,7 @@ import android.os.Bundle
 
 import java.util.UUID
 
-class BundleProvider protected constructor(b: Bundle?) : IBundleProvider {
+open class BundleProvider protected constructor(b: Bundle?) : IBundleProvider {
 
     protected val bundle: Bundle
 

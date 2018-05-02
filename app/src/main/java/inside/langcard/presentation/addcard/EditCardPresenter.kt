@@ -8,6 +8,7 @@ import com.svp.infrastructure.mvpvs.commutate.CommutativePresenter
 import inside.langcard.domain.model.CardModel
 import inside.langcard.presentation.ActivityOperationResult
 import inside.langcard.presentation.Dialog.*
+import inside.langcard.presentation.bundles.EditCardBundle
 import java.util.*
 
 /**
@@ -25,9 +26,14 @@ class EditCardPresenter(override val id: UUID) : CommutativePresenter<EditCardAc
 
     override fun onAttachedView(view: EditCardActivity, intent: Intent) {
         activ = view
+
+        val id = EditCardBundle(intent).getIdCard()
+        state.model = when(id){
         //get model from intend and set model to view state if it editing,
         // generate new one if it is addition new
-        state.model = CardModel("112")
+            "" ->  CardModel("112")
+            else -> CardModel(id)
+        }
     }
 
     override fun onDetachedView(view: EditCardActivity) {
